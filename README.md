@@ -7,12 +7,3 @@ GeoPortal facilitates searching and finding geospatial data and associated infor
 
 The Portal has been developed by Survey Department, Geographic Information Infrastructure Division (NGIID), Government of Nepal.
 
-
-## Running the Project:
-
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
-```
