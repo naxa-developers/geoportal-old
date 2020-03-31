@@ -1,3 +1,5 @@
+# Geoportal
+
 [![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org)
 [![Django Version](https://img.shields.io/badge/django-3-brightgreen.svg)](https://djangoproject.com)
 
@@ -7,3 +9,12 @@ GeoPortal facilitates searching and finding geospatial data and associated infor
 
 The Portal has been developed by Survey Department, Geographic Information Infrastructure Division (NGIID), Government of Nepal.
 
+Setup Process
+
+Simply copy local_settings_sample file to same directory of local_settings_sample naming local_settings.py.
+
+
+```
+pip install -r requirements.txt
+python manage.py runserver
+```
