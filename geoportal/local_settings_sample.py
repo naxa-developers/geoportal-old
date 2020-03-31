@@ -10,3 +10,7 @@ DATABASES = {
          'PORT': '5432',
      }
  }
+
+CORS_ORIGIN_WHITELIST = [
+    "https://example.com",
+]
