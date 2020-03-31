@@ -23,7 +23,7 @@ def calc_geometry_field(geometry_type):
     if geometry_type == "Polygon":
         return "geom_multipolygon"
 
-    elif geometry_type == "LineString":
+    elif geometry_type == "LineString" or geometry_type == "Line String":
         return "geom_multilinestring"
 
     elif geometry_type == "Point":
@@ -41,6 +41,9 @@ def get_ogr_feature_attribute(attr, feature):
 
     if attr.type == ogr.OFTInteger:
         value = str(feature.GetFieldAsInteger(attr_name))
+
+    elif attr.type == ogr.OFTInteger64:
+        value = str(feature.GetFieldAsInteger64(attr_name))
 
     elif attr.type == ogr.OFTIntegerList:
         value = repr(feature.GetFieldAsIntegerList(attr_name))
@@ -82,4 +85,5 @@ def get_ogr_feature_attribute(attr, feature):
     else:
         return (False, "Unsupported attribute type: " +
                 str(attr.type))
+
     return (True, value)
