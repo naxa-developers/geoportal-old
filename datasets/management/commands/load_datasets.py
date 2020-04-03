@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         dir_name = sys.argv[3]
-        shapefile_name = 'hydro'
+        shapefile_name = 'hydro ln'
 
         # datasource = ogr.Open(os.path.join(dir_name, shapefile_name))
         datasource = ogr.Open(dir_name)
