@@ -3,6 +3,13 @@ from django.db.models import Manager as GeoManager
 from django.contrib.postgres.fields import JSONField
 
 
+class Department(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Dataset(models.Model):
     name = models.CharField(max_length=255)
     srs_wkt = models.CharField(max_length=255)
