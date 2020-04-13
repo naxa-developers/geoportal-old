@@ -14,6 +14,20 @@ from users.models import UserProfile
 
 
 class RoleListView(APIView):
+    """
+        Url Parameters:
+            None
+
+        Query Parameters:
+            None
+
+        Body Parameters:
+            None
+
+        Returns:
+            GET : list of all groups with each permissions, all permissions and departments.
+    """
+
     permission_classes = (SuperAdminPermission,)
 
     def get(self, *args, **kwargs):
@@ -34,6 +48,19 @@ class RoleListView(APIView):
 
 
 class AddRoleView(viewsets.ModelViewSet):
+    """
+        Url Parameters:
+            None
+
+        Query Parameters:
+            None
+
+        Body Parameters:
+            fields defined in AddRoleSerializer
+
+        Returns:
+            POST : 201 in case of success else 400
+    """
     permission_classes = (SuperAdminPermission,)
     serializer_class = AddRoleSerializer
 
@@ -53,6 +80,19 @@ class AddRoleView(viewsets.ModelViewSet):
 
 
 class AddAdminView(viewsets.ModelViewSet):
+    """
+       Url Parameters:
+           None
+
+       Query Parameters:
+           None
+
+       Body Parameters:
+            fields defined in AdminSerializer
+
+       Returns:
+           POST : 201 in case of success else 400
+    """
     permission_classes = (SuperAdminPermission,)
     serializer_class = AdminSerializer
 
