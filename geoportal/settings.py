@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
 
     'rest_framework',
     'corsheaders',
+
+    'datasets',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -133,4 +137,3 @@ try:
     from .local_settings import *
 except ImportError:
     pass
-

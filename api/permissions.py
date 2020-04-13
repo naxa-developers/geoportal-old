@@ -1,12 +1,12 @@
 from rest_framework import permissions
 
 
-class OwnerProfilePermission(permissions.BasePermission):
+class SuperAdminPermission(permissions.BasePermission):
     """
-    Object-level permission to only allow owners of an object to View and Update it.
+        Super user Permission who can access all
     """
 
-    def has_object_permission(self, request, view, obj):
+    def has_permission(self, request, view):
 
-        if obj.user == request.user:
+        if request.user.is_superuser:
             return True
