@@ -12,7 +12,10 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: ./manage.py test
+          command: |
+          ./manage.py test
+          apt-get update && apt-get install -y \
+          gdal-bin python-gdal python3-gdal
           name: Test
 
 workflows:
