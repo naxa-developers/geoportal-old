@@ -13,8 +13,8 @@ jobs:
       - python/save-cache
       - run:
           command: |
-            apt-get update && apt-get install -y \
-            gdal-bin python-gdal python3-gdal
+            sudo apt-get update &&\
+            sudo apt-get install -y gdal-bin python-gdal python3-gdal
             ./manage.py test
           name: Test
 
