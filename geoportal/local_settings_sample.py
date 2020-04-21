@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from .settings import *
 
 DATABASES = {

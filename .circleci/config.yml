@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/python:3.6
       - image: mdillon/postgis:11-alpine
-        
+
     environment:
       DATABASE_URL: postgis://postgres:@localhost/geo1
       DJANGO_SECRET_KEY: test
