@@ -8,7 +8,7 @@ DATABASES = {
          'NAME': 'geo1',
          'USER': 'postgres',
          'PASSWORD': '',
-         'HOST': '',
+         'HOST': 'localhost',
          'PORT': '5432',
      }
  }
