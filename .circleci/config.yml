@@ -1,10 +1,12 @@
 version: 2.1
 
+orbs:
+  python: circleci/python@0.2.1
+
 jobs:
   build-and-test:
     working_directory: ~/geoportal
     docker:
-      - image: circleci/python:3.6.9
       - image: mdillon/postgis:11-alpine
         environment:
           POSTGRES_USER: geo
