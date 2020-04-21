@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6
-      - image: circleci/postgres:alpine-postgis-ram
+      - image: circleci/postgres:10.1-postgis
       - image: wooyek/geodjango
 
     environment:
