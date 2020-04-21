@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6
+        environment:
+          DATABASE_URL: postgis://postgres@localhost/geo1
+
       - image: mdillon/postgis:11-alpine
         environment:
           POSTGRES_USER: postgres
