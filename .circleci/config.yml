@@ -4,6 +4,13 @@ jobs:
     docker:
       - image: circleci/python:3.6
       - image: mdillon/postgis:11-alpine
+        
+    environment:
+      DATABASE_URL: postgis://postgres:@localhost/geo1
+      DJANGO_SECRET_KEY: test
+      DJANGO_READ_DOT_ENV_FILE: True
+      DJANGO_SETTINGS_MODULE: geoportal.local_settings_sample
+
     steps:
       - checkout
       - restore_cache:
