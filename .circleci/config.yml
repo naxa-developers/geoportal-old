@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: circleci/python:3.6
       - image: mdillon/postgis:11-alpine
+      - image: osgeo/gdal:alpine-ultrasmall-latest
 
     environment:
       DATABASE_URL: postgis://postgres:@localhost/geo1
@@ -20,8 +21,8 @@ jobs:
             python3 -m venv geoenv
             . geoenv/bin/activate
             pip install -r requirements.txt
-            sudo apt-get update &&\
-            sudo apt-get install -y libgdal-dev gdal-bin python-gdal python3-gdal
+#            sudo apt-get update &&\
+#            sudo apt-get install -y gdal-bin python-gdal python3-gdal
 
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
