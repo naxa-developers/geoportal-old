@@ -18,6 +18,9 @@ jobs:
       - python/save-cache
       - run:
           command: |
+            python3 -m venv geoenv
+            . geoenv/bin/activate
+            pip install -r requirements.txt
             sudo apt-get update &&\
             sudo apt-get install -y gdal-bin python-gdal python3-gdal
             ./manage.py test
