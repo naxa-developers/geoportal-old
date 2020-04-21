@@ -3,8 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.6
-      - image: circleci/postgres:10.1-postgis
-      - image: geodata/gdal
+      - image: circleci/postgres:alpine-postgis-ram
+      - image: wooyek/geodjango
 
     environment:
       DATABASE_URL: postgis://postgres:@localhost/geo1
