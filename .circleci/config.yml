@@ -9,7 +9,7 @@ jobs:
       DATABASE_URL: postgis://postgres:@localhost/geo1
       DJANGO_SECRET_KEY: test
       DJANGO_READ_DOT_ENV_FILE: True
-      DJANGO_SETTINGS_MODULE: geoportal.local_settings_sample
+      DJANGO_SETTINGS_MODULE: geoportal.settings
 
     steps:
       - checkout
