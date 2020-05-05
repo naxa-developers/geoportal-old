@@ -13,7 +13,35 @@ Setup Process
 Simply copy local_settings_sample file to same directory of local_settings_sample naming local_settings.py.
 
 
+
+#### Geoportal with Docker setup
 ```
+For Development
+
+cp local_settings_sample.py local_settings.py
+docker build -t geoportal .
+docker-compose up
+Application will run on port 8019, you can change it from docker-compose.yaml file.
+
+For Production 
+
+cp local_settings_sample.py local_settings.py
+docker build -t geoportal:0.1.0 -f prod.Dockerfile .
+docker tag geoportal:0.1.0 geoportal/geoportal:0.1.0
+docker-compose -f docker-compose-prod.yaml up -d
+Application will run on port 8019
+
+```
+*Check logs ```docker-compose logs -f --tail 100```* <br>
+*Django command shell ```docker exec -it geoportal_web python manage.py shell```* <br>
+*Postgres command shell ```docker exec -it geoportal_postgres  psql -U postgres```* <br>
+
+
+##### Alternatives Geoportal setup using virtualenvironment (If you are not familiar with docker)
+```
+Create virtual environment
+Activate the environment
 pip install -r requirements.txt
+cp local_settings_sample.py local_settings.py
 python manage.py runserver
 ```

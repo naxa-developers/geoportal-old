@@ -1,12 +1,85 @@
-version: '3'
+version: '3.7'
 
 services:
-  server:
-    build: .
-    env_file: .env
-    ports:
-      - "8000:8000"
-    external_links:
-     - geoportal_psql:db
+  geoportaldb:
+    image: mdillon/postgis:11-alpine
+    container_name: geoportal_postgres
+    restart: always
     volumes:
-      - .:/code
+      - ./postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5430:5432
+#    env_file:
+#      - db.env
+    networks:
+      - geoportal_net
+  redis:
+    image: redis:alpine
+    restart: always
+    container_name: geoportal_redis
+    command: redis-server --appendonly yes
+    volumes:
+      - ./redis_data:/var/lib/redis
+    ports:
+      - 6377:6379
+    networks:
+      - geoportal_net
+
+  web:
+    image: geoportal/geoportal:0.1.0
+    restart: always
+    container_name: geoportal_web
+    command: gunicorn geoportal.wsgi:application --bind 0.0.0.0:8019
+
+    volumes:
+      - ./:/usr/src/app/
+      - ./media:/usr/src/app/media/
+      - ./nginx:/usr/src/app/nginx/
+    ports:
+      - 9015:8019
+    links:
+      - geoportaldb
+      - redis
+#    env_file:
+#      - web.env
+    depends_on:
+      - geoportaldb
+    networks:
+      - geoportal_net
+
+  celery:
+    image: geoportal/geoportal:0.1.0
+    container_name: geoportal_celery
+    restart: always
+    command: celery -A geoportal worker -l info
+    volumes:
+      - ./media:/usr/src/app/media/
+    depends_on:
+      - redis
+#    env_file: web.env
+    networks:
+      - geoportal_net
+
+  nginx:
+    image: nginx:1.17.2-alpine
+    container_name: geoportal_nginx
+    volumes:
+      - ./static:/usr/src/app/static/
+      - ./media:/usr/src/app/media/
+      - ./nginxlog:/var/log/nginx/
+      - ./nginx:/etc/nginx/conf.d/
+    ports:
+      - 9016:80
+      - 441:443
+    depends_on:
+      - web
+      - celery
+      - redis
+      - geoportaldb
+    networks:
+      - geoportal_net
+
+networks:
+  geoportal_net:
+    name: geoportal_net
+    external: false

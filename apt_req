@@ -1,0 +1,13 @@
+screen
+binutils
+libproj-dev
+libgdal-dev
+gdal-bin
+gettext
+g++
+gcc
+make
+cmake
+wget
+git
+nano

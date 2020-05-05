@@ -21,3 +21,4 @@ SIMPLE_JWT = {
 CORS_ORIGIN_WHITELIST = [
     "https://example.com",
 ]
+CELERY_BROKER_URL = 'redis://redis:6379'
