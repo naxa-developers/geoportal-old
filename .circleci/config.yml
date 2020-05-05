@@ -9,7 +9,7 @@ jobs:
       DATABASE_URL: postgis://postgres:@localhost/geo
       DJANGO_SECRET_KEY: test
       DJANGO_READ_DOT_ENV_FILE: True
-      DJANGO_SETTINGS_MODULE: circle.settings
+      DJANGO_SETTINGS_MODULE: geoportal.settings
 
     steps:
       - checkout
@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Running tests
           command: |
-            . circle/bin/activate
+            . geoenv/bin/activate
             python3 manage.py test
       - store_artifacts:
           path: test-reports/
