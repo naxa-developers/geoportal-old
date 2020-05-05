@@ -2,7 +2,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.6-brightgreen.svg)](https://python.org)
 [![Django Version](https://img.shields.io/badge/django-3-brightgreen.svg)](https://djangoproject.com)
-[![CircleCI](https://circleci.com/gh/naxa-developers/geoportal/tree/master.svg?style=shield)](https://circleci.com/gh/naxa-developers/geoportal/tree/master)
+[![CircleCI](https://circleci.com/gh/naxa-developers/geoportal/tree/master.svg?style=svg)](https://circleci.com/gh/naxa-developers/geoportal/tree/master)
 
 GeoPortal facilitates searching and finding geospatial data and associated information services in Nepal and promotes geospatial data sharing in the country.
 
